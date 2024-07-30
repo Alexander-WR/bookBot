@@ -3,9 +3,13 @@ def main():
     text = get_book_text(book_path)
     num_words = get_num_words(text)
     characters = get_characters(text)
+    checkWord = input("Enter a word: ")
+    inCheck = nicks_a_belter(text, checkWord)
+
     print(f"{num_words} words found in the document")
     for character, count in characters.items():
         print(f"the '{character}' character was found: {count} times")
+    print(f"The word '{checkWord}' was found {inCheck} times")
 
 
 def get_num_words(text):
@@ -30,5 +34,9 @@ def get_characters(text):
     sorted_bank = dict(sorted(bank.items()))
     return sorted_bank
 
+def nicks_a_belter(text, checkWord):
+    words = text.lower().split()
+    word_count = words.count(checkWord.lower())
+    return word_count
 
 main()
